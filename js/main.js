@@ -72,7 +72,7 @@ function checkRightOrWrong (pickedName, pickedAnswer) {
     } else {
         console.log(questionStore[pickedAnswer].answer);
         console.log(pickedAnswer);
-        console.log('Umm, what are you doing? That was wrong.');
+        console.log('Umm, what are you doing? That was wrong.'); 
     
     }
 }
