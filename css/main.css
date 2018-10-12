@@ -91,6 +91,10 @@ h1 {
     border-radius: 10px;
 }
 
+.js-responses-container {
+    text-align: center;
+}
+
 .status-photo-container {
     background-color: darkgrey;
     height: 150px;

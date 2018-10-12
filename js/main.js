@@ -68,9 +68,12 @@ function checkRightOrWrong (pickedName, pickedAnswer) {
     console.log(`Answer sent over to be checked: ${pickedAnswer}`);
     if (pickedName == questionStore[pickedAnswer].answer) {
         console.log('You picked the right one! You rock!');
+        
     } else {
         console.log(questionStore[pickedAnswer].answer);
+        console.log(pickedAnswer);
         console.log('Umm, what are you doing? That was wrong.');
+    
     }
 }
 
@@ -86,6 +89,7 @@ function submitQuestion(number) {
         const arrayToCheck = number;
         console.log(`Answer picked: ${checkedName}`);
         checkRightOrWrong(checkedName, arrayToCheck);
+
     });
 }
 
