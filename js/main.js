@@ -39,47 +39,53 @@ function choiceDisplay() {
 }
 
 function displayGameResults() {
-
+    // This will be used for the final screen to show the results. 
 }
 
-function shuffleChoices(questionInput) {
-    console.log(`Original question set: ${questionInput}`)
-    var currentIndex = array.length, temporaryValue, randomIndex;
+// function shuffleChoices(questionInput) {
+//     console.log(`Original question set: ${questionInput}`)
+//     var currentIndex = array.length, temporaryValue, randomIndex;
     
-    while (0 !== currentIndex) {
+//     while (0 !== currentIndex) {
 
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
+//         randomIndex = Math.floor(Math.random() * currentIndex);
+//         currentIndex -= 1;
     
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    console.log(questionInput);
-    return questionInput;
-}
+//         temporaryValue = array[currentIndex];
+//         array[currentIndex] = array[randomIndex];
+//         array[randomIndex] = temporaryValue;
+//     }
+//     console.log(questionInput);
+//     return questionInput;
+// }
 
 
 function displayAnswerResults() {
 
 }
 
-// function checkRightOrWrong (pickedAnswer) {
-//     console.log(`Answer sent over to be checked: ${pickedAnswer}`);
-//     if (pickedAnswer === )   
-// }
+function checkRightOrWrong (pickedName, pickedAnswer) {
+    console.log(`Answer sent over to be checked: ${pickedAnswer}`);
+    if (pickedName == questionStore[pickedAnswer].answer) {
+        console.log('You picked the right one! You fucking rock!');
+    } else {
+        console.log(questionStore[pickedAnswer].answer);
+        console.log('Umm, what are you doing? That was wrong.');
+    }
+}
 
 function pushNextQuestion() {
     $('.js-question-container').html(questionDisplay());
     $('.js-form-container').html(choiceDisplay());
 }
 
-function submitQuestion() {
+function submitQuestion(number) {
     $('.quiz-answer-form').submit(function (event) {
         event.preventDefault();
         var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
+        const arrayToCheck = number;
         console.log(`Answer picked: ${checkedName}`);
-        // checkRightOrWrong(checkedName);
+        checkRightOrWrong(checkedName, arrayToCheck);
     });
 }
 
@@ -92,6 +98,7 @@ function setCurrentQuestion() {
     console.log(`Current question is: ${questionsReady.question}`);
     loadQuestions(pullWhichArray);
     updateNumberCounter(currentQuestionNumber);
+    submitQuestion(pullWhichArray);
 }
 
 function updateNumberCounter(number) {
@@ -111,12 +118,10 @@ function loadQuestions(questionNumber) {
 
 }
 
-
 function handleStartGame() {
     console.log(`The current Answer Store says: ${userAnswerStore}.`);
     setCurrentQuestion();
     pushNextQuestion();
-    submitQuestion();
 }
 
 $(handleStartGame);
