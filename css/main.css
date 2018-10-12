@@ -23,9 +23,7 @@ h1 {
  }
 
 
-body {
 
-}
 /* Background Video */
 
 .background-video video{
@@ -62,70 +60,166 @@ body {
     margin: 10px 0px;
 }
 
+.site-header a {
+    text-decoration: none;
+}
+
 .site-headline {
     font-size: 3em;
-    color: #DB5461;
+    color: #213A86
 }
 
 .byline {
-    color: #E3655B;
+    color: #213A86;
     font-size: 2em;
 }
 
 /* Game Containers */
 
 .game-container {
-    height: 500px;
+    min-height: 500px;
     margin: auto;
     text-align: center;
-    background-color: #FDFFFC;
+    background-color: lightgray;
     border-radius: 5px;
     opacity: .8;
 }
 
 .question-container {
-    
+    background-color: darkgrey;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.status-photo-container {
+    background-color: darkgrey;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.padding-container {
+    height: 10px;
 }
 
 .answer-container {
-    width: 100%;
+    text-align: center;
+    background-color: lightgray;
+}
+
+
+/* Instructions */
+
+.instruction-container {
+    text-align: center;
+}
+
+.game-instructions {
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.instructions-list li {
+    list-style-type: square;
+    list-style-position: inside;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+
+.game-instructions-header {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.begin-game {
+    text-align: center;
+    margin: 0 auto;
 }
 
 /* Questions */
 
 .question-number {
-    color: white;
+
     padding: 10px 0px;
 }
 
 .question {
-    color: white;
+
     padding: 20px;
+}
+
+.quiz-answer-form {
+    padding-top: 10px;
+}
+
+.question-counter {
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 15px;
 }
 
 /* Answers */
 
-.answer-container {
-    margin-top: 15px;
+.form-list {
+    text-align: left;
 }
 
-.form-list {
-    
+.answer-text {
+    color: darkgreen;
+    padding: 10px 0;
+}
+
+.wrong {
+    color: darkred;
+}
+
+.right {
+    color: darkgreen;
 }
 
 .form-list input {
     display: inline;
 }
 
+/* Final Tally */
+
+.final-score {
+    font-size: 1.6em;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.rating {
+    font-size: 1.6em;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.rating-example {
+    font-weight: 800;
+}
+
+.rating-final {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
 /* Quiz Controls */
 
-.standard-button {
-    background-color: #DB5461;
+.submit-button {
+    background-color: white;
     margin: 25px;
     padding: 10px;
     border: 0px;
     border-radius: 5px;
     font-size: 1.25em;
+}
+
+.js-question-container {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.4em;
+    padding: 15px;
 }
 
 /* Media Queries */

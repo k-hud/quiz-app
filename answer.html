@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Test Your Movie Trivia</title>
+        <meta name="description" content="Test your movie trivia. Ten questions. Do you have what it takes?">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/grid.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link href="https://fonts.googleapis.com/css?family=K2D|Roboto" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="background-video">
+            <video loop muted autoplay class="fullscreen-bg__video">
+                <source src="https://player.vimeo.com/external/293920279.hd.mp4?s=83fc7f0aa61c616acc61d4806a5141223fc799ea&profile_id=169" type="video/mp4">
+            </video>
+        </div>
+       <header>
+            <div class="row"> 
+                <div class="col-12">
+                    <div class="site-header">
+                        <a href="index.html"><h1 class="site-headline">The Movie Trivia App</h1></a>
+
+                        <a href="index.html"><h2 class="byline">You're crushing it!</h2></a>
+                    </div>
+                </div>
+            </div>
+       </header>
+       <main>
+            <div class="row">
+                    <div class="game-container col-12">
+                        <!-- Full Game Container -->
+                        <div class="row">    
+                            <!-- Number and Image Row -->    
+                            <div class="question-container col-4">
+
+                                <h2 class="question-number">Question: </h2><div class="question-counter">#10 of 10</div>
+                            </div>
+                            <div class="padding-container col-4">
+
+                            </div>
+                            
+                            <div class="status-photo-container col-4">
+                                <h4>How you're doing so far:</h4>
+                                <p><iframe src="https://giphy.com/embed/3og0IyHYXtcm2VQpig" width="213" height="120" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
+                            </div>
+                        </div>       
+                        <div class="row"> 
+                        <!-- Actual Question Row -->
+                            <div class="padding-container col-3">
+                            </div>
+                            <div class="col-6">
+                                <h3 class="question">The Answer:</h3>       
+                            </div>
+                            <div class="padding-container col-3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="answer-container col-12">
+                                <form action="final.html" class="quiz-answer-form">
+                                    <ul class="form-list">
+                                         <li>
+                                            <input type="radio" checked="checked" name="quiz-answer" value="answer-1">
+                                            <label class="right" for="answer-1">Answer 1 - Here's some more text for sizing.</label>
+                                            <p class="answer-text">This was the right answer! I hope you got it, for your sake and for your score's sake.</p>
+                                        </li>
+                                        
+                                        <li>
+                                            <input type="radio" name="quiz-answer" value="answer-2"> 
+                                            <label class="wrong" for="answer-1">Answer 2  - Here's some more text for sizing.</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="quiz-answer" value="answer-3">
+                                            <label class="wrong" for="answer-3 wrong">Answer 3  - Here's some more text for sizing.</label>
+                                        </li>
+                                        <li>  
+                                            <input type="radio" name="quiz-answer" value="answer-4">
+                                            <label class="wrong" for="answer-4 wrong">Answer 4  - Here's some more text for sizing.</label></li>
+                                        </li>   
+                                    </ul>
+                                    <a href="final.html"><button class="standard-button">Tally the final scores</button></a>
+                                </form> 
+                            
+                            </div>
+                        </div> 
+                            
+                    </div>
+                </div>
+       </main>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="js/main.js"></script>
+        <script src="js/datastore.js"></script>
+    </body>
+</html>
