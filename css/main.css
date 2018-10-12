@@ -210,7 +210,7 @@ h1 {
 
 /* Quiz Controls */
 
-.submit-button {
+.js-submit-button {
     background-color: white;
     margin: 25px;
     padding: 10px;

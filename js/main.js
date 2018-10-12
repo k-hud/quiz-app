@@ -60,17 +60,25 @@ function choiceDisplay() {
 // }
 
 
+function nextButtonReset(currentQuestionNumber) {
+    if (currentQuestionNumber = 1) {
+        $('.js-submit-button').html("Submit");
+    } else {
+        $('.js-submit-button').html("Next");
+    }
+}
+
 function displayAnswerResults(answer) {
     if (answer === true) {
         $('.js-responses-container').html('Right!');
-        $(userAnswerStore).push("True");
+        userAnswerStore.push("True");
         console.log(userAnswerStore);
     } else if (answer === false) {
         $('.js-responses-container').html('Wrong!');
-        $(userAnswerStore).push("False");
+        userAnswerStore.push("False");
         console.log(userAnswerStore);
     }
-
+    nextButtonReset();
 }
 
 function checkRightOrWrong (pickedName, pickedAnswer) {
@@ -108,6 +116,7 @@ function setCurrentQuestion() {
     console.log(`Current question is: ${questionsReady.question}`);
     loadQuestions(pullWhichArray);
     updateNumberCounter(currentQuestionNumber);
+    nextButtonReset(currentQuestionNumber);
     submitQuestion(pullWhichArray);
 }
 
