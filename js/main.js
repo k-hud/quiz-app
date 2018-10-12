@@ -38,9 +38,9 @@ function choiceDisplay() {
 
 }
 
-function displayGameResults() {
-    // This will be used for the final screen to show the results. 
-}
+// function displayGameResults() {
+//     // This will be used for the final screen to show the results. 
+// }
 
 // function shuffleChoices(questionInput) {
 //     console.log(`Original question set: ${questionInput}`)
@@ -60,21 +60,27 @@ function displayGameResults() {
 // }
 
 
-function displayAnswerResults() {
+function displayAnswerResults(answer) {
+    if (answer === true) {
+        $('.js-responses-container').html('Right!');
+        $(userAnswerStore).push("True");
+        console.log(userAnswerStore);
+    } else if (answer === false) {
+        $('.js-responses-container').html('Wrong!');
+        $(userAnswerStore).push("False");
+        console.log(userAnswerStore);
+    }
 
 }
 
 function checkRightOrWrong (pickedName, pickedAnswer) {
     console.log(`Answer sent over to be checked: ${pickedAnswer}`);
     if (pickedName == questionStore[pickedAnswer].answer) {
-        console.log('You picked the right one! You rock!');
-        
+        var checkedAnswer = true;
     } else {
-        console.log(questionStore[pickedAnswer].answer);
-        console.log(pickedName);
-        console.log('Umm, what are you doing? That was wrong.'); 
-    
+        var checkedAnswer = false;
     }
+    displayAnswerResults(checkedAnswer);
 }
 
 function pushNextQuestion() {
