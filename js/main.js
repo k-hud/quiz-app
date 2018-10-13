@@ -22,14 +22,14 @@ function choiceDisplay() {
 </li>
 
 <li>
-   <input type="radio" name="quiz-answer" value="answer-2" id="#choice-two" class="choices"> 
+   <input type="radio" name="quiz-answer" value="answer-2" id="#choice-two" class="choices">
    <label for="answer-2">${choiceTwo}</label>
 </li>
 <li>
    <input type="radio" name="quiz-answer" value="answer-3" id="#choice-three" class="choices">
    <label for="answer-3">${choiceThree}</label>
 </li>
-<li>  
+<li>
    <input type="radio" name="quiz-answer" value="answer-4" id="#choice-four" class="choices">
    <label for="answer-4">${choiceFour}</label></li>
 </li>   `
@@ -39,18 +39,18 @@ function choiceDisplay() {
 }
 
 // function displayGameResults() {
-//     // This will be used for the final screen to show the results. 
+//     // This will be used for the final screen to show the results.
 // }
 
 // function shuffleChoices(questionInput) {
 //     console.log(`Original question set: ${questionInput}`)
 //     var currentIndex = array.length, temporaryValue, randomIndex;
-    
+
 //     while (0 !== currentIndex) {
 
 //         randomIndex = Math.floor(Math.random() * currentIndex);
 //         currentIndex -= 1;
-    
+
 //         temporaryValue = array[currentIndex];
 //         array[currentIndex] = array[randomIndex];
 //         array[randomIndex] = temporaryValue;
@@ -77,7 +77,7 @@ function displayAnswerResults(answer, currentQuestionNum, ) {
         userAnswerStore.push("True");
     } else if (answer === false) {
         $('.js-responses-container').addClass('js-wrong-answer');
-        // I need to get the right answer in here. 
+        // I need to get the right answer in here.
         $('.js-responses-container').html(`No way! That's not it. The correct answer was ${answer}.`);
         userAnswerStore.push("False");
     }
@@ -140,7 +140,7 @@ function loadQuestions(questionNumber) {
     choiceTwo = questionStore[questionNumber].incorrect1;
     choiceThree = questionStore[questionNumber].incorrect2;
     choiceFour = questionStore[questionNumber].incorrect3;
-    
+
     console.log(`We're at loadQuestions...
     Question: ${question}
     Choice 1: ${choiceOne}
@@ -150,8 +150,18 @@ function loadQuestions(questionNumber) {
 
 }
 
+function nextQuestion() {
+  // Clear anything?
+  //Push the next question
+  //Reset the button to say submit
+  //Reset the GIF
+  //Update the number counter
+}
+
 function handleStartGame() {
     setCurrentQuestion();
+    //Needs to better prep for getting the game underway
+    //Need to clear the userAnswerStore
 }
 
 $(handleStartGame);
