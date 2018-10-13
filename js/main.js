@@ -10,11 +10,16 @@ var choiceTwo = "";
 var choiceThree = "";
 var choiceFour = "";
 
+var currentQuestionNumber = 1;
+
+var pullWhichObject = userAnswerStore.length;
+
+var gameState = 0;
+
 function questionDisplay() {
 
-    const showQuestion = $(`<p>${question}</p>`);
+    return $(`<p>${question}</p>`);
 
-    return showQuestion;
 }
 
 function choiceDisplay() {
@@ -42,103 +47,113 @@ function choiceDisplay() {
 }
 
 
-function nextButtonReset(currentQuestionNumber) {
-
-        $('.js-submit-button').html("Next");
-
-        $('#next-button').on('click', function (event) {
-
-            $('.js-responses-container').html(` `);
-            return setCurrentQuestion();
-
-        });
-}
-
-function displayAnswerResults(answer, currentQuestionNum, ) {
+function displayAnswerResults(answer) {
 
     const currentQuestionRightAnswer = answer;
-
-    if (answer === true) {
-
-        $('.js-responses-container').addClass('js-right-answer');
-        $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNum + 1}.`);
-
-        userAnswerStore.push("True");
-      } else if (answer === false) {
-
-        $('.js-responses-container').addClass('js-wrong-answer');
-        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${answer}.`);
-
-        userAnswerStore.push("False");
+    console.log(currentQuestionRightAnswer);
+    if (currentQuestionNumber < 10) {
+      currentQuestionNumber++
+    } else {
+      currentQuestionNumber = currentQuestionNumber;
     }
 
-    nextButtonReset(currentQuestionNum);
+
+    if (answer === true && gameState === 1) {
+
+        $('.js-responses-container').addClass('js-right-answer');
+        $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
+        $("input[type=radio]").attr('disabled', true);
+
+        userAnswerStore.push("True");
+        gameState = 0;
+        nextQuestion();
+      } else {
+
+        $('.js-responses-container').addClass('js-wrong-answer');
+        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[pullWhichObject].answer}.`);
+        $("input[type=radio]").attr('disabled', true);
+
+        userAnswerStore.push("False");
+        gameState = 0;
+        nextQuestion();
+    }
 }
 
-function checkRightOrWrong (pickedName, pickedAnswer, currentQuestionNum) {
+function checkRightOrWrong (pickedName) {
 
-    if (pickedName == questionStore[pickedAnswer].answer) {
+    if (pickedName == questionStore[pullWhichObject].answer) {
         var checkedAnswer = true;
       } else {
         var checkedAnswer = false;
       }
 
-    displayAnswerResults(checkedAnswer, currentQuestionNum);
+    displayAnswerResults(checkedAnswer);
 }
 
 function pushNextQuestion() {
 
     $('.js-question-container').html(questionDisplay());
     $('.js-form-container').html(choiceDisplay());
+
+    console.log(`userAnswerStore after pushNextQuestion runs is: ${userAnswerStore}`);
 }
 
-function submitQuestion(arrayNumber, currentQuestionNum) {
-    $('.quiz-answer-form').submit(function (event) {
-
+function submitQuestion(arrayNumber) {
+    $('#next-button').on('click', function (event) {
+        gameState = 1;
         event.preventDefault();
         var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
-        const arrayToCheck = arrayNumber;
 
-        checkRightOrWrong(checkedName, arrayToCheck, currentQuestionNum);
+        checkRightOrWrong(checkedName);
 
     });
 }
 
-function setCurrentQuestion() {
 
-    const currentQuestionNumber = userAnswerStore.length + 1;
-    const pullWhichArray = currentQuestionNumber - 1;
-    const questionsReady = questionStore[currentQuestionNumber - 1];
 
-    $('.js-submit-button').html("Submit");
-    loadQuestions(pullWhichArray);
-    updateNumberCounter(currentQuestionNumber);
-    pushNextQuestion();
-    submitQuestion(pullWhichArray, currentQuestionNumber);
+function updateNumberCounter() {
+
+    $('.question-counter').html(`#<span class="question-counter">${currentQuestionNumber}</span> of 10`);
+    console.log(`userAnswerStore after updateNumberCounter runs is: ${userAnswerStore}`);
 }
 
-function updateNumberCounter(number) {
-
-    $('.question-counter').html(`#<span class="question-counter">${number}</span> of 10`);
-}
-
-function loadQuestions(questionNumber) {
+function loadQuestions() {
 // Note: Need to randomize these before we show them. Later.
 
-    question = questionStore[questionNumber].question;
-    choiceOne = questionStore[questionNumber].answer;
-    choiceTwo = questionStore[questionNumber].incorrect1;
-    choiceThree = questionStore[questionNumber].incorrect2;
-    choiceFour = questionStore[questionNumber].incorrect3;
+    question = questionStore[pullWhichObject].question;
+    choiceOne = questionStore[pullWhichObject].answer;
+    choiceTwo = questionStore[pullWhichObject].incorrect1;
+    choiceThree = questionStore[pullWhichObject].incorrect2;
+    choiceFour = questionStore[pullWhichObject].incorrect3;
+    console.log(`userAnswerStore after loadQuestions runs is: ${userAnswerStore}`);
 
+}
+
+function setCurrentQuestion() {
+
+    loadQuestions();
+    updateNumberCounter();
+    pushNextQuestion();
+    $('.js-submit-button').html("Submit");
+    submitQuestion(pullWhichObject, currentQuestionNumber);
+    console.log(`userAnswerStore after setCurrentQuestion runs is: ${userAnswerStore}`);
 }
 
 function nextQuestion() {
-  // Clear anything?
-  //Push the next question
-  //Reset the button to say submit
-  //Reset the GIF
-  //Update the number counter
+
+  $('.js-submit-button').html("Next");
+
+  $('#next-button').on('click', function (event) {
+
+      $("input[type=radio]").attr('enabled', true);
+      $('.js-responses-container').empty();
+      console.log(`userAnswerStore after Next button is: ${userAnswerStore}`);
+      console.log(currentQuestionNumber);
+      setCurrentQuestion();
+
+  });
+
+
 }
 
 function handleStartGame() {
