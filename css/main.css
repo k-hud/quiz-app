@@ -91,6 +91,10 @@ h1 {
     border-radius: 10px;
 }
 
+.js-responses-container {
+    text-align: left;
+}
+
 .status-photo-container {
     background-color: darkgrey;
     height: 150px;
@@ -169,16 +173,23 @@ h1 {
     padding: 10px 0;
 }
 
-.wrong {
-    color: darkred;
-}
-
-.right {
-    color: darkgreen;
-}
 
 .form-list input {
     display: inline;
+}
+
+/* Response Styling */
+
+.js-wrong-answer {
+    color: darkred;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.js-right-answer {
+    color: darkgreen;
+    font-weight: 600;
+    font-size: 1.5em;
 }
 
 /* Final Tally */
@@ -206,7 +217,7 @@ h1 {
 
 /* Quiz Controls */
 
-.submit-button {
+.js-submit-button {
     background-color: white;
     margin: 25px;
     padding: 10px;

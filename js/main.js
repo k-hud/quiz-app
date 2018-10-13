@@ -38,9 +38,9 @@ function choiceDisplay() {
 
 }
 
-function displayGameResults() {
-    // This will be used for the final screen to show the results. 
-}
+// function displayGameResults() {
+//     // This will be used for the final screen to show the results. 
+// }
 
 // function shuffleChoices(questionInput) {
 //     console.log(`Original question set: ${questionInput}`)
@@ -60,18 +60,38 @@ function displayGameResults() {
 // }
 
 
-function displayAnswerResults() {
-
+function nextButtonReset(currentQuestionNumber) {
+        $('.js-submit-button').html("Next");
+        // console.log('I should say Next');
+        $('#next-button').on('click', function (event) {
+            $('.js-responses-container').html(` `);
+            return setCurrentQuestion();
+        });
 }
 
-function checkRightOrWrong (pickedName, pickedAnswer) {
-    console.log(`Answer sent over to be checked: ${pickedAnswer}`);
-    if (pickedName == questionStore[pickedAnswer].answer) {
-        console.log('You picked the right one! You rock!');
-    } else {
-        console.log(questionStore[pickedAnswer].answer);
-        console.log('Umm, what are you doing? That was wrong.');
+function displayAnswerResults(answer, currentQuestionNum, ) {
+    const currentQuestionRightAnswer = answer;
+    if (answer === true) {
+        $('.js-responses-container').addClass('js-right-answer');
+        $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNum + 1}.`);
+        userAnswerStore.push("True");
+    } else if (answer === false) {
+        $('.js-responses-container').addClass('js-wrong-answer');
+        // I need to get the right answer in here. 
+        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${answer}.`);
+        userAnswerStore.push("False");
     }
+    nextButtonReset(currentQuestionNum);
+}
+
+function checkRightOrWrong (pickedName, pickedAnswer, currentQuestionNum) {
+    // console.log(`Answer sent over to be checked: ${pickedAnswer}`);
+    if (pickedName == questionStore[pickedAnswer].answer) {
+        var checkedAnswer = true;
+    } else {
+        var checkedAnswer = false;
+    }
+    displayAnswerResults(checkedAnswer, currentQuestionNum);
 }
 
 function pushNextQuestion() {
@@ -79,49 +99,59 @@ function pushNextQuestion() {
     $('.js-form-container').html(choiceDisplay());
 }
 
-function submitQuestion(number) {
+function submitQuestion(arrayNumber, currentQuestionNum) {
     $('.quiz-answer-form').submit(function (event) {
         event.preventDefault();
         var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
-        const arrayToCheck = number;
-        console.log(`Answer picked: ${checkedName}`);
-        checkRightOrWrong(checkedName, arrayToCheck);
+        const arrayToCheck = arrayNumber;
+        // console.log(`Answer picked: ${checkedName}`);
+        checkRightOrWrong(checkedName, arrayToCheck, currentQuestionNum);
+
     });
 }
 
 function setCurrentQuestion() {
+    console.log(`Before starting User Answer Store says: ${userAnswerStore}`);
     const currentQuestionNumber = userAnswerStore.length + 1;
     const pullWhichArray = currentQuestionNumber - 1;
-    console.log(`Current question number is: ${pullWhichArray}`);
+    console.log(`Current array position is: ${pullWhichArray}`);
     console.log(`Current question number is: ${currentQuestionNumber}`);
+    console.log(`Current question to be pulled is: ${questionStore[pullWhichArray].question}`);
     const questionsReady = questionStore[currentQuestionNumber - 1];
-    console.log(`Current question is: ${questionsReady.question}`);
+    // console.log(`Current question is: ${questionsReady.question}`);
+    $('.js-submit-button').html("Submit");
     loadQuestions(pullWhichArray);
     updateNumberCounter(currentQuestionNumber);
-    submitQuestion(pullWhichArray);
+    pushNextQuestion();
+    submitQuestion(pullWhichArray, currentQuestionNumber);
 }
 
 function updateNumberCounter(number) {
-    console.log(`Number sent over to updateNumberCounter is: ${number}`);
+    // console.log(`Number sent over to updateNumberCounter is: ${number}`);
     $('.question-counter').html(`#<span class="question-counter">${number}</span> of 10`);
 
 }
 
 function loadQuestions(questionNumber) {
-    console.log(`Question number passed over to get from the store is: ${questionNumber}`);
-    console.log(`Question number passed over is the type of: ${typeof questionNumber}`);
+    // console.log(`Question number passed over to get from the store is: ${questionNumber}`);
+    // console.log(`Question number passed over is the type of: ${typeof questionNumber}`);
     question = questionStore[questionNumber].question;
     choiceOne = questionStore[questionNumber].answer;
     choiceTwo = questionStore[questionNumber].incorrect1;
     choiceThree = questionStore[questionNumber].incorrect2;
     choiceFour = questionStore[questionNumber].incorrect3;
+    
+    console.log(`We're at loadQuestions...
+    Question: ${question}
+    Choice 1: ${choiceOne}
+    Choice 2: ${choiceTwo}
+    Choice 3: ${choiceThree}
+    Choice 4: ${choiceFour}`);
 
 }
 
 function handleStartGame() {
-    console.log(`The current Answer Store says: ${userAnswerStore}.`);
     setCurrentQuestion();
-    pushNextQuestion();
 }
 
 $(handleStartGame);
