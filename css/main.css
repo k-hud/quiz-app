@@ -92,7 +92,7 @@ h1 {
 }
 
 .js-responses-container {
-    text-align: center;
+    text-align: left;
 }
 
 .status-photo-container {
@@ -173,16 +173,23 @@ h1 {
     padding: 10px 0;
 }
 
-.wrong {
-    color: darkred;
-}
-
-.right {
-    color: darkgreen;
-}
 
 .form-list input {
     display: inline;
+}
+
+/* Response Styling */
+
+.js-wrong-answer {
+    color: darkred;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.js-right-answer {
+    color: darkgreen;
+    font-weight: 600;
+    font-size: 1.5em;
 }
 
 /* Final Tally */
