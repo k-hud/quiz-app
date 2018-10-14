@@ -67,13 +67,32 @@
                             <div class="answer-container col-6">
                                 <form class="quiz-answer-form" id="#question-picker-form">
                                     <ul class="form-list js-form-container">
-                                         <!-- JS choices will appear here -->
+                                      <li>
+                                        <input type="radio" name="quiz-answer" value="answer-1" class="choices">
+                                        <label for="answer-1"><span id="#choice-one"><!--Choice one here--></span></label>
+                                      </li>
+
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-2"  class="choices">
+                                      <label for="answer-2" id="#choice-two"><span id="#choice-two"><!--Choice two here--></span></label>
+                                     </li>
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-3" class="choices">
+                                      <label for="answer-3"><span id="#choice-three"><!--Choice three here--></span></label>
+                                     </li>
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-4" class="choices">
+                                      <label for="answer-4"><span id="#choice-four"><!--Choice four here--></span></label>
+                                     </li>
                                     </ul>
                                     <div class="button-container">
-                                       <button type="submit" class="js-next-button">Next Question</button><button type="submit" class="js-submit-button">Submit Answer</button>
+                                       <button type="submit" class="js-submit-button">Submit</button>
                                     </div>
 
                                 </form>
+                                <div class="next-button-container">
+                                  <button type="submit" class="js-next-button">Next</button>
+                                </div>
                             </div>
                             <div class="padding-container col-3">
                             </div>
