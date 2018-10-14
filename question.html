@@ -14,7 +14,7 @@
     <body>
         <div class="background-video">
             <video loop muted autoplay class="fullscreen-bg__video">
-                <source src="https://player.vimeo.com/external/293920279.hd.mp4?s=83fc7f0aa61c616acc61d4806a5141223fc799ea&profile_id=169" type="video/mp4">
+                <source id="#background-video" src="https://player.vimeo.com/external/293920279.hd.mp4?s=83fc7f0aa61c616acc61d4806a5141223fc799ea&profile_id=169" type="video/mp4">
             </video>
         </div>
        <header>
@@ -44,14 +44,14 @@
 
                             <div class="status-photo-container col-4">
                                 <h4>How you're doing so far:</h4>
-                                <p><iframe src="https://giphy.com/embed/o5oLImoQgGsKY" width="150" height="150" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
+                                <p><img src="https://media.giphy.com/media/o5oLImoQgGsKY/giphy.gif" frameBorder="0" id="#update-gif" class="giphy-embed"></p>
                             </div>
                         </div>
                         <div class="row">
                         <!-- Actual Question Row -->
                             <div class="padding-container col-3">
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 results-container">
                                 <div class="js-question-container">
                                     <!-- JS questions will appear here. -->
                                 </div>
@@ -64,7 +64,8 @@
                         <div class="row">
                             <div class="padding-container col-3">
                             </div>
-                            <div class="answer-container col-6">
+                            <div class="answer-container col-6 js-results-container">
+
                                 <form class="quiz-answer-form" id="#question-picker-form">
                                     <ul class="form-list js-form-container">
                                       <li>
@@ -88,16 +89,21 @@
                                     <div class="button-container">
                                        <button type="submit" class="js-submit-button">Submit</button>
                                     </div>
-
                                 </form>
-                                <div class="next-button-container">
-                                  <button type="submit" class="js-next-button">Next</button>
-                                </div>
-                            </div>
-                            <div class="padding-container col-3">
-                            </div>
-                        </div>
 
+                            </div>
+
+                          <div class="padding-container col-3">
+                          </div>
+
+                      </div>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="next-button-container">
+                              <button type="submit" class="js-next-button">Next</button>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                 </div>
        </main>
