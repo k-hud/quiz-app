@@ -4,15 +4,11 @@
 // wrongReactionGifs = Gifs for wrong answers.
 // rightReactionGifs = Gifs for right answers.
 
-function resetQuestions() {
-
-      var question = ""
-      var choiceOne = "";
-      var choiceTwo = "";
-      var choiceThree = "";
-      var choiceFour = "";
-
-}
+var question = ""
+var choiceOne = "";
+var choiceTwo = "";
+var choiceThree = "";
+var choiceFour = "";
 
 var currentQuestionNumber = 1;
 
@@ -95,21 +91,9 @@ function pushNextQuestion() {
     $('.js-question-container').html(questionDisplay());
     $('.js-form-container').html(choiceDisplay());
 
-
 }
 
-function submitQuestion() {
-    //RIGHT HERE is where the problem happens.
-    // $('#question-picker-form').submit( event => {
-    $('.js-submit-button').on('click', event => {
 
-        event.preventDefault();
-        var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
-
-        checkRightOrWrong(checkedName);
-
-    });
-}
 
 
 
@@ -139,32 +123,44 @@ function setCurrentQuestion() {
     loadQuestions();
     updateNumberCounter();
     pushNextQuestion();
-    submitQuestion();
+
+}
+
+function submitListener() {
+
+    $('.js-submit-button').on('click', event => {
+
+        event.preventDefault();
+        var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
+
+        checkRightOrWrong(checkedName);
+    });
 }
 
 function nextQuestion() {
 
+  $('.js-submit-button').css('visibility','hidden');
   $('.js-next-button').css('visibility','visible');
+  $("input[type=radio]").attr('enabled', true);
+  setCurrentQuestion();
+}
 
+function nextListener() {
   $('.js-next-button').on('click', function (event) {
       $("input[type=radio]").attr('enabled', true);
       $('.js-next-button').css('visibility','hidden');
       $('.js-submit-button').css('visibility','visible');
-      resetQuestions();
       setCurrentQuestion();
 
   });
-
-
 }
 
 function handleStartGame() {
-    setCurrentQuestion();
-    resetQuestions();
-    $('.js-next-button').css('visibility','hidden');
+  $('.js-next-button').css('visibility','hidden');
     $('.js-submit-button').css('visibility','visible');
-    //Needs to better prep for getting the game underway
-    //Need to clear the userAnswerStore
+    setCurrentQuestion();
+    submitListener();
+    nextListener();
 }
 
 $(handleStartGame);
