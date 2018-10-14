@@ -94,12 +94,14 @@ function pushNextQuestion() {
 
     $('.js-question-container').html(questionDisplay());
     $('.js-form-container').html(choiceDisplay());
-    debugger;
+
 
 }
 
 function submitQuestion() {
-    $('.js-submit-button').on('click', function (event) {
+    //RIGHT HERE is where the problem happens.
+    // $('#question-picker-form').submit( event => {
+    $('.js-submit-button').on('click', event => {
 
         event.preventDefault();
         var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
@@ -146,8 +148,6 @@ function nextQuestion() {
 
   $('.js-next-button').on('click', function (event) {
       $("input[type=radio]").attr('enabled', true);
-      console.log(`userAnswerStore after Next button is: ${userAnswerStore}`);
-      console.log(currentQuestionNumber);
       $('.js-next-button').css('visibility','hidden');
       $('.js-submit-button').css('visibility','visible');
       resetQuestions();
