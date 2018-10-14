@@ -150,6 +150,7 @@ function setCurrentQuestion() {
 
 function nextQuestion() {
 
+
   $("input[type=radio]").attr('enabled', true);
   $('.js-submit-button').html('Submit');
 
@@ -160,9 +161,11 @@ function nextQuestion() {
 //Status:
 function handleStartGame() {
 
+    $("img[class='giphy-embed']").attr('src', defaultGif[0]);
     setCurrentQuestion();
     console.log(`In handleStartGame Current state store is: ${currentStateStore}`);
     $("button[class='js-next-button']").toggle();
+
 
 }
 
