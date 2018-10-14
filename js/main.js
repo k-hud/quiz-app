@@ -6,15 +6,14 @@ $( document ).ready(function() {
 // wrongReactionGifs = Gifs for wrong answers.
 // rightReactionGifs = Gifs for right answers.
 
-var question = ""
-var choiceOne = "";
-var choiceTwo = "";
-var choiceThree = "";
-var choiceFour = "";
+let question = "";
+let choiceOne = "";
+let choiceTwo = "";
+let choiceThree = "";
+let choiceFour = "";
 
-var currentQuestionNumber = 1;
-
-var pullWhichObject = userAnswerStore.length;
+let currentStateStore = userAnswerStore.length;
+let currentQuestionNumber = userAnswerStore.length + 1;
 
 function questionDisplay() {
     $('.js-responses-container').html(` `);
@@ -31,14 +30,15 @@ function choiceDisplay() {
 }
 
 
-function displayAnswerResults(answer) {
+function displayAnswerResults(answer, correctAnswerString) {
 
-    const currentQuestionRightAnswer = answer;
-    console.log(currentQuestionRightAnswer);
+    //This works.
     if (currentQuestionNumber < 10) {
       currentQuestionNumber++
+
     } else {
       currentQuestionNumber = currentQuestionNumber;
+      console.log(currentQuestionNumber);
     }
 
 
@@ -47,31 +47,36 @@ function displayAnswerResults(answer) {
         $('.js-responses-container').addClass('js-right-answer');
         $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
         $("input[type=radio]").attr('disabled', true);
-        $('.js-next-submit-button').html('Next');
+        $("button[class='js-next-button']").toggle();
+        $("button[class='js-submit-button']").toggle();
+
         userAnswerStore.push("True");
-        nextQuestion();
-        debugger;
+
+
       } else {
 
         $('.js-responses-container').addClass('js-wrong-answer');
-        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[pullWhichObject].answer}.`);
+        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[currentStateStore].answer}.`);
         $("input[type=radio]").attr('disabled', true);
-        $('.js-next-submit-button').html('Next');
+        $("button[class='js-next-button']").toggle();
+        $("button[class='js-submit-button']").toggle();
+
         userAnswerStore.push("False");
-        nextQuestion();
-        debugger;
-    }
-}
+
+      }
+  }
+
 
 function checkRightOrWrong (selectedName) {
 
-    if (selectedName == questionStore[pullWhichObject].answer) {
+    // This works. Checks answer and sends true.
+    if (selectedName == questionStore[currentStateStore].answer) {
         var checkedAnswer = true;
       } else {
         var checkedAnswer = false;
       }
-      debugger;
-    displayAnswerResults(checkedAnswer);
+
+    displayAnswerResults(checkedAnswer, selectedName);
 }
 
 function pushNextQuestion() {
@@ -83,21 +88,22 @@ function pushNextQuestion() {
 
 function updateNumberCounter() {
 
-    $('.question-counter').html(`#<span class="question-counter">${currentQuestionNumber}</span> of 10`);
+    $('.question-counter').html(`<span class="question-counter">${currentQuestionNumber}</span> of 10`);
 }
 
 function loadQuestions() {
-// Note: Need to randomize these before we show them. Later.
 
-    question = questionStore[userAnswerStore.length].question;
+  // Note: This is broken. Not updating to the right number/question in the Store.
+    console.log(`userAnswerStore says ${userAnswerStore}, currentQuestionNumber says ${currentQuestionNumber}, and currentStateStore says ${currentStateStore}.`);
+    question = questionStore[currentStateStore].question;
     console.log(`userAnswerStore after loadQuestions runs is: ${question}`);
-    choiceOne = questionStore[userAnswerStore.length].answer;
+    choiceOne = questionStore[currentStateStore].answer;
     console.log(`userAnswerStore after loadQuestions runs is: ${choiceOne}`);
-    choiceTwo = questionStore[userAnswerStore.length].incorrect1;
+    choiceTwo = questionStore[currentStateStore].incorrect1;
     console.log(`userAnswerStore after loadQuestions runs is: ${choiceTwo}`);
-    choiceThree = questionStore[userAnswerStore.length].incorrect2;
+    choiceThree = questionStore[currentStateStore].incorrect2;
     console.log(`userAnswerStore after loadQuestions runs is: ${choiceThree}`);
-    choiceFour = questionStore[userAnswerStore.length].incorrect3;
+    choiceFour = questionStore[currentStateStore].incorrect3;
     console.log(`userAnswerStore after loadQuestions runs is: ${choiceFour}`);
 
 }
@@ -107,51 +113,50 @@ function setCurrentQuestion() {
     loadQuestions();
     updateNumberCounter();
     pushNextQuestion();
-
+    console.log(`At end of setCurrentQuestion Current state store is: ${currentStateStore}`);
 }
-
-// function submitListener() {
-//
-//     $('.js-next-submit-button').on('click', event => {
-//
-//         event.preventDefault();
-//         var checkedName = $('input[name=quiz-answer]:checked').siblings().html();
-//
-//         checkRightOrWrong(checkedName);
-//     });
-// }
 
 function nextQuestion() {
 
   $("input[type=radio]").attr('enabled', true);
-  $('.js-next-submit-button').html('Submit');
+  $('.js-submit-button').html('Submit');
 
   setCurrentQuestion();
 }
 
-
+//Set which question should come up first/next.
+//Status:
 function handleStartGame() {
 
     setCurrentQuestion();
+    console.log(`In handleStartGame Current state store is: ${currentStateStore}`);
+    $("button[class='js-next-button']").toggle();
 
 }
 
-//Submit button listner.
 $('.js-submit-button').on('click', event => {
 
-     $("input[type=radio]").attr('enabled', true);
-     setCurrentQuestion();
+    $("input[type=radio]").attr('enabled', false);
+    event.preventDefault();
+    var checkedName = $('input[name=quiz-answer]:checked').siblings().children().html();
+    checkRightOrWrong(checkedName, currentStateStore, currentQuestionNumber);
 
  });
 
-//Next button listner.
 $('.js-next-button').on('click', event => {
-
-  console.log('Next button clicked');
+  currentStateStore = userAnswerStore.length;
+  loadQuestions();
+  updateNumberCounter();
+  pushNextQuestion();
+  $("input[type=radio]").attr('disabled', false);
+  $("form[class='quiz-answer-form']").trigger('reset');
+  $("button[class='js-next-button']").toggle();
+  $("button[class='js-submit-button']").toggle();
 
 });
 
-
+//Start the game.
+//Status: Fine.
 $(handleStartGame);
 
 
