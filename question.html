@@ -18,7 +18,7 @@
             </video>
         </div>
        <header>
-            <div class="row"> 
+            <div class="row">
                 <div class="col-12">
                     <div class="site-header">
                         <a href="index.html"><h1 class="site-headline">The Movie Trivia App</h1></a>
@@ -32,8 +32,8 @@
             <div class="row">
                     <div class="game-container col-12">
                         <!-- Full Game Container -->
-                        <div class="row">    
-                            <!-- Number and Image Row -->    
+                        <div class="row">
+                            <!-- Number and Image Row -->
                             <div class="question-container col-4">
 
                                 <h2 class="question-number">Question: </h2><div class="question-counter"></div>
@@ -41,13 +41,13 @@
                             <div class="padding-container col-4">
 
                             </div>
-                            
+
                             <div class="status-photo-container col-4">
                                 <h4>How you're doing so far:</h4>
                                 <p><iframe src="https://giphy.com/embed/o5oLImoQgGsKY" width="150" height="150" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></p>
                             </div>
-                        </div>       
-                        <div class="row"> 
+                        </div>
+                        <div class="row">
                         <!-- Actual Question Row -->
                             <div class="padding-container col-3">
                             </div>
@@ -67,15 +67,37 @@
                             <div class="answer-container col-6">
                                 <form class="quiz-answer-form" id="#question-picker-form">
                                     <ul class="form-list js-form-container">
-                                         <!-- JS choices will appear here -->
+                                      <li>
+                                        <input type="radio" name="quiz-answer" value="answer-1" class="choices">
+                                        <label for="answer-1"><span id="#choice-one"><!--Choice one here--></span></label>
+                                      </li>
+
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-2"  class="choices">
+                                      <label for="answer-2" id="#choice-two"><span id="#choice-two"><!--Choice two here--></span></label>
+                                     </li>
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-3" class="choices">
+                                      <label for="answer-3"><span id="#choice-three"><!--Choice three here--></span></label>
+                                     </li>
+                                     <li>
+                                      <input type="radio" name="quiz-answer" value="answer-4" class="choices">
+                                      <label for="answer-4"><span id="#choice-four"><!--Choice four here--></span></label>
+                                     </li>
                                     </ul>
-                                    <button type="submit" class="js-submit-button" id="next-button"><!--Submit or Next button text here--></button>
-                                </form> 
+                                    <div class="button-container">
+                                       <button type="submit" class="js-submit-button">Submit</button>
+                                    </div>
+
+                                </form>
+                                <div class="next-button-container">
+                                  <button type="submit" class="js-next-button">Next</button>
+                                </div>
                             </div>
                             <div class="padding-container col-3">
                             </div>
-                        </div> 
-                            
+                        </div>
+
                     </div>
                 </div>
        </main>
