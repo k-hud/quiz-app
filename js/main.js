@@ -33,12 +33,11 @@ function displayGameResults() {
   var numWrong = countRightArray(userAnswerStore, "False");
 
 
-  $('.results-container').html(``);
+  $('.results-container').html(`<span class="results-headline">Ok. Here's how you did. Are you nervous?</span>
+    <p class="results-text">You got: <span class="right-num">${numRight}</span> right answers.</p>
+    <p class="results-text">You got: <span class="wrong-num">${numWrong}</span> wrong answers.</p>`);
   $('.js-results-container').html(`
-    <div class="results-show">Ok. Here's how you did. Are you nervous?
-      <p>You got: ${numRight} right answers.</p>
-      <p>You got: ${numWrong} right answers.</p>
-    </div>
+
   `);
 }
 

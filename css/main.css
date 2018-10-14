@@ -115,6 +115,10 @@ h1 {
   max-width: 200px;
 }
 
+.js-results-container {
+  min-width: 300px;
+}
+
 
 /* Instructions */
 
@@ -251,6 +255,26 @@ h1 {
     font-weight: 600;
     font-size: 1.4em;
     padding: 15px;
+}
+
+/* Results */
+
+.results-headline {
+  font-weight: 600;
+  font-size: 1.6em;
+}
+
+.results-text {
+  text-decoration: underline;
+  padding: 5px;
+}
+
+.right-num {
+  color: green;
+}
+
+.wrong-num {
+  color: red;
 }
 
 /* Media Queries */
