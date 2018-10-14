@@ -39,6 +39,8 @@ function displayGameResults() {
   $('.js-results-container').html(`
 
   `);
+
+  $('.next-button-container').html(`<a href="question.html"><button type="submit" class="restart-button">Restart</button></a>`);
 }
 
 function questionDisplay() {

@@ -13,6 +13,6 @@ const questionStore = [
 
 const userAnswerStore = [];
 
-const wrongReactionGifs = ["https://media.giphy.com/media/9NTfxeLPpgRUI/giphy.gif","https://media.giphy.com/media/fv9EO0McAqqDS/giphy.gif","https://media.giphy.com/media/3og0IRo1EZPNnhbBV6/giphy.gif"];
+const wrongReactionGifs = ["https://media.giphy.com/media/9NTfxeLPpgRUI/giphy.gif","https://media.giphy.com/media/fv9EO0McAqqDS/giphy.gif","https://media.giphy.com/media/3og0IRo1EZPNnhbBV6/giphy.gif","https://media.giphy.com/media/YU0j0j92jLdU4/giphy.gif","https://media.giphy.com/media/3oz8xKaVomTm8vI3uw/giphy.gif","https://media.giphy.com/media/13xb3GPki9Kqdi/giphy.gif","https://media.giphy.com/media/f7yH375mnEh2g/giphy.gif"];
 
-const rightReactionGifs = ["https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif","https://media.giphy.com/media/dkGhBWE3SyzXW/giphy.gif","https://media.giphy.com/media/RgfGmnVvt8Pfy/giphy.gif","https://media.giphy.com/media/JVdF14CQQH7gs/giphy.gif","https://media.giphy.com/media/em4i0bDs9Hm2Q/giphy.gif"];
+const rightReactionGifs = ["https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif","https://media.giphy.com/media/dkGhBWE3SyzXW/giphy.gif","https://media.giphy.com/media/RgfGmnVvt8Pfy/giphy.gif","https://media.giphy.com/media/JVdF14CQQH7gs/giphy.gif","https://media.giphy.com/media/em4i0bDs9Hm2Q/giphy.gif","https://media.giphy.com/media/cXRdGDNCsiGX6S0qOM/giphy.gif","https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif","https://media.giphy.com/media/xTiTnzEhdR9y9PNyc8/giphy.gif"];

@@ -97,7 +97,7 @@ h1 {
 
 .status-photo-container {
     background-color: darkgrey;
-    min-height: 200px;
+    min-height: 150px;
     max-height: 250px;
     border-radius: 10px;
 }
@@ -112,7 +112,11 @@ h1 {
 }
 
 .giphy-embed {
-  max-width: 200px;
+  max-width: 220px;
+}
+
+.results-container {
+  padding-top: 30px;
 }
 
 .js-results-container {
@@ -260,6 +264,7 @@ h1 {
 /* Results */
 
 .results-headline {
+  padding-top: 30px;
   font-weight: 600;
   font-size: 1.6em;
 }
@@ -275,6 +280,16 @@ h1 {
 
 .wrong-num {
   color: red;
+}
+
+.restart-button {
+    background-color: white;
+    margin: 25px 0px;
+    padding: 10px;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 1.25em;
+    visibility: visible;
 }
 
 /* Media Queries */
