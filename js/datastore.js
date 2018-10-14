@@ -13,6 +13,6 @@ const questionStore = [
 
 const userAnswerStore = [];
 
-const wrongReactionGifs = ["https://media.giphy.com/media/9NTfxeLPpgRUI/giphy.gif","https://media.giphy.com/media/6tdZrBcwGIMPC/giphy.gif","https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif"];
+const wrongReactionGifs = ["https://media.giphy.com/media/9NTfxeLPpgRUI/giphy.gif","https://media.giphy.com/media/fv9EO0McAqqDS/giphy.gif","https://media.giphy.com/media/3og0IRo1EZPNnhbBV6/giphy.gif"];
 
-const rightReactionGifs = ["https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif","https://media.giphy.com/media/8fen5LSZcHQ5O/giphy.gif","https://media.giphy.com/media/RgfGmnVvt8Pfy/giphy.gif"];
+const rightReactionGifs = ["https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif","https://media.giphy.com/media/dkGhBWE3SyzXW/giphy.gif","https://media.giphy.com/media/RgfGmnVvt8Pfy/giphy.gif","https://media.giphy.com/media/JVdF14CQQH7gs/giphy.gif","https://media.giphy.com/media/em4i0bDs9Hm2Q/giphy.gif"];

@@ -37,7 +37,7 @@ function newGoodGif() {
 }
 
 function newBadGif() {
-  let yesGif = rightReactionGifs[Math.floor(Math.random()*rightReactionGifs.length)];
+  let badGif = wrongReactionGifs[Math.floor(Math.random()*wrongReactionGifs.length)];
   console.log(badGif);
   return badGif;
 }
@@ -67,21 +67,19 @@ function displayAnswerResults(answer, correctAnswerString) {
         userAnswerStore.push("True");
 
 
-      } else if (answer == false) {
-        newBadGif();
+      } else {
+        let noGif =newBadGif();
         $('.js-responses-container').addClass('js-wrong-answer');
         $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[currentStateStore].answer}.`);
+        $("img[class='giphy-embed']").attr('src', noGif);
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
 
         userAnswerStore.push("False");
 
-      } else {
-        alert('You need to answer the question!');
+      }
     }
-
-  }
 
 
 function checkRightOrWrong (selectedName) {
@@ -165,6 +163,7 @@ $('.js-next-button').on('click', event => {
   loadQuestions();
   updateNumberCounter();
   pushNextQuestion();
+  $('.js-responses-container').removeClass('js-right-answer js-wrong-answer');
   $("input[type=radio]").attr('disabled', false);
   $("form[class='quiz-answer-form']").trigger('reset');
   $("button[class='js-next-button']").toggle();

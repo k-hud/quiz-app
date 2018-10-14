@@ -97,7 +97,8 @@ h1 {
 
 .status-photo-container {
     background-color: darkgrey;
-    height: 150px;
+    min-height: 200px;
+    max-height: 250px;
     border-radius: 10px;
 }
 
