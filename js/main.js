@@ -15,12 +15,38 @@ let choiceFour = "";
 let currentStateStore = userAnswerStore.length;
 let currentQuestionNumber = userAnswerStore.length + 1;
 
+
+
+function displayGameResults() {
+
+  function countRightArray(array, testAgainst) {
+      var count = 0;
+      for (var i = 0; i < array.length; i++) {
+          if (array[i] === testAgainst) {
+              count++;
+          }
+      }
+      return count;
+  }
+
+  var numRight = countRightArray(userAnswerStore, "True");
+  var numWrong = countRightArray(userAnswerStore, "False");
+
+
+  $('.results-container').html(``);
+  $('.js-results-container').html(`
+    <div class="results-show">Ok. Here's how you did. Are you nervous?
+      <p>You got: ${numRight} right answers.</p>
+      <p>You got: ${numWrong} right answers.</p>
+    </div>
+  `);
+}
+
 function questionDisplay() {
     $('.js-responses-container').html(` `);
     return $(`<p>${question}</p>`);
 
 }
-
 
 function choiceDisplay() {
 
@@ -47,12 +73,9 @@ function displayAnswerResults(answer, correctAnswerString) {
     //This works.
     if (currentQuestionNumber < 10) {
       currentQuestionNumber++
-
     } else {
-      currentQuestionNumber = currentQuestionNumber;
-      console.log(currentQuestionNumber);
-    }
-
+    currentQuestionNumber = currentQuestionNumber;
+}
 
     if (answer === true) {
         let yesGif = newGoodGif();
@@ -108,18 +131,11 @@ function updateNumberCounter() {
 
 function loadQuestions() {
 
-  // Note: This is broken. Not updating to the right number/question in the Store.
-    console.log(`userAnswerStore says ${userAnswerStore}, currentQuestionNumber says ${currentQuestionNumber}, and currentStateStore says ${currentStateStore}.`);
     question = questionStore[currentStateStore].question;
-    console.log(`userAnswerStore after loadQuestions runs is: ${question}`);
     choiceOne = questionStore[currentStateStore].answer;
-    console.log(`userAnswerStore after loadQuestions runs is: ${choiceOne}`);
     choiceTwo = questionStore[currentStateStore].incorrect1;
-    console.log(`userAnswerStore after loadQuestions runs is: ${choiceTwo}`);
     choiceThree = questionStore[currentStateStore].incorrect2;
-    console.log(`userAnswerStore after loadQuestions runs is: ${choiceThree}`);
     choiceFour = questionStore[currentStateStore].incorrect3;
-    console.log(`userAnswerStore after loadQuestions runs is: ${choiceFour}`);
 
 }
 
@@ -159,20 +175,24 @@ $('.js-submit-button').on('click', event => {
  });
 
 $('.js-next-button').on('click', event => {
-  currentStateStore = userAnswerStore.length;
-  loadQuestions();
-  updateNumberCounter();
-  pushNextQuestion();
-  $('.js-responses-container').removeClass('js-right-answer js-wrong-answer');
-  $("input[type=radio]").attr('disabled', false);
-  $("form[class='quiz-answer-form']").trigger('reset');
-  $("button[class='js-next-button']").toggle();
-  $("button[class='js-submit-button']").toggle();
 
+    if (userAnswerStore.length === 10) {
+      alert('OMG. You made it all the way through. Lets tally up some scores');
+      displayGameResults();
+    } else {
+
+    currentStateStore = userAnswerStore.length;
+    loadQuestions();
+    updateNumberCounter();
+    pushNextQuestion();
+    $('.js-responses-container').removeClass('js-right-answer js-wrong-answer');
+    $("input[type=radio]").attr('disabled', false);
+    $("form[class='quiz-answer-form']").trigger('reset');
+    $("button[class='js-next-button']").toggle();
+    $("button[class='js-submit-button']").toggle();
+  }
 });
 
-//Start the game.
-//Status: Fine.
 $(handleStartGame);
 
 
