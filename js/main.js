@@ -21,6 +21,7 @@ function questionDisplay() {
 
 }
 
+
 function choiceDisplay() {
 
     $("span[id='#choice-one']").html(choiceOne);
@@ -29,6 +30,17 @@ function choiceDisplay() {
     $("span[id='#choice-four']").html(choiceFour);
 }
 
+function newGoodGif() {
+  let yesGif = rightReactionGifs[Math.floor(Math.random()*rightReactionGifs.length)];
+  console.log(yesGif);
+  return yesGif;
+}
+
+function newBadGif() {
+  let yesGif = rightReactionGifs[Math.floor(Math.random()*rightReactionGifs.length)];
+  console.log(badGif);
+  return badGif;
+}
 
 function displayAnswerResults(answer, correctAnswerString) {
 
@@ -43,9 +55,11 @@ function displayAnswerResults(answer, correctAnswerString) {
 
 
     if (answer === true) {
-
+        let yesGif = newGoodGif();
+        console.log(`Did I send yesGif back over? ${yesGif}`);
         $('.js-responses-container').addClass('js-right-answer');
         $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
+        $("img[class='giphy-embed']").attr('src', yesGif);
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
@@ -53,8 +67,8 @@ function displayAnswerResults(answer, correctAnswerString) {
         userAnswerStore.push("True");
 
 
-      } else {
-
+      } else if (answer == false) {
+        newBadGif();
         $('.js-responses-container').addClass('js-wrong-answer');
         $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[currentStateStore].answer}.`);
         $("input[type=radio]").attr('disabled', true);
@@ -63,7 +77,10 @@ function displayAnswerResults(answer, correctAnswerString) {
 
         userAnswerStore.push("False");
 
-      }
+      } else {
+        alert('You need to answer the question!');
+    }
+
   }
 
 

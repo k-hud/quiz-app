@@ -110,6 +110,10 @@ h1 {
     background-color: lightgray;
 }
 
+.giphy-embed {
+  max-width: 200px;
+}
+
 
 /* Instructions */
 
