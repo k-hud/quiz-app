@@ -1,8 +1,11 @@
 $( document ).ready(function() {
 
+// datastore.js holds all of the following:
 // questionStore = Array of Objects, each holding the questions in order by index.
 // userAnswerStore = Array where we can store the # of the answers that were picked
 // rightAnswerStore = Numbers of the correct answers
+// defaultGif = Gif showing that we're waiting around for you to answer.
+// finalGif = Your suprise for ending the game.
 // wrongReactionGifs = Gifs for wrong answers.
 // rightReactionGifs = Gifs for right answers.
 
@@ -11,11 +14,10 @@ let choiceOne = "";
 let choiceTwo = "";
 let choiceThree = "";
 let choiceFour = "";
+let questionArray = [];
 
 let currentStateStore = userAnswerStore.length;
 let currentQuestionNumber = userAnswerStore.length + 1;
-
-
 
 function displayGameResults() {
 
@@ -82,8 +84,10 @@ function displayAnswerResults(answer, correctAnswerString) {
         let yesGif = newGoodGif();
         console.log(`Did I send yesGif back over? ${yesGif}`);
         $('.js-responses-container').addClass('js-right-answer');
-        $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
+        $('.js-responses-container').html(`Right! You are a rockstar!<br/>
+          Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
         $("img[class='giphy-embed']").attr('src', yesGif);
+        $("img[class='giphy-embed']").attr('alt', 'You did great!');
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
@@ -94,8 +98,10 @@ function displayAnswerResults(answer, correctAnswerString) {
       } else {
         let noGif =newBadGif();
         $('.js-responses-container').addClass('js-wrong-answer');
-        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[currentStateStore].answer}.`);
+        $('.js-responses-container').html(`No way! That's not it. <br/>
+        The correct answer was ${questionStore[currentStateStore].answer}.`);
         $("img[class='giphy-embed']").attr('src', noGif);
+        $("img[class='giphy-embed']").attr('alt', 'You did didnt do so hot. Womp Womp.');
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
@@ -132,11 +138,28 @@ function updateNumberCounter() {
 
 function loadQuestions() {
 
-    question = questionStore[currentStateStore].question;
-    choiceOne = questionStore[currentStateStore].answer;
-    choiceTwo = questionStore[currentStateStore].incorrect1;
-    choiceThree = questionStore[currentStateStore].incorrect2;
-    choiceFour = questionStore[currentStateStore].incorrect3;
+  question = questionStore[currentStateStore].question;
+  choiceOne = questionStore[currentStateStore].answer;
+  choiceTwo = questionStore[currentStateStore].incorrect1;
+  choiceThree = questionStore[currentStateStore].incorrect2;
+  choiceFour = questionStore[currentStateStore].incorrect3;
+
+  questionArray.push(choiceOne, choiceTwo, choiceThree, choiceFour);
+  console.log(questionArray);
+  questionRandomize(questionArray);
+
+  function questionRandomize(array) {
+
+      let randomArray = array;
+      randomArray.sort(function() { return 0.5 - Math.random() });
+      console.log(`New shuffled is: ${questionArray}`);
+      }
+
+
+  choiceOne = questionArray[0];
+  choiceTwo = questionArray[1];
+  choiceThree = questionArray[2];
+  choiceFour = questionArray[3];
 
 }
 
@@ -162,6 +185,7 @@ function nextQuestion() {
 function handleStartGame() {
 
     $("img[class='giphy-embed']").attr('src', defaultGif[0]);
+    $("img[class='giphy-embed']").attr('alt', 'Waiting on you');
     setCurrentQuestion();
     console.log(`In handleStartGame Current state store is: ${currentStateStore}`);
     $("button[class='js-next-button']").toggle();
@@ -173,24 +197,32 @@ $('.js-submit-button').on('click', event => {
 
     $("input[type=radio]").attr('enabled', false);
     event.preventDefault();
-    var checkedName = $('input[name=quiz-answer]:checked').siblings().children().html();
-    checkRightOrWrong(checkedName, currentStateStore, currentQuestionNumber);
+    if ($("input[type=radio]").is(':checked')) {
+      var checkedName = $('input[name=quiz-answer]:checked').siblings().children().html();
+      checkRightOrWrong(checkedName, currentStateStore, currentQuestionNumber);
+    } else {
+      alert('Hey! Pick one!');
+    }
+
 
  });
 
 $('.js-next-button').on('click', event => {
 
     if (userAnswerStore.length === 10) {
-      alert('OMG. You made it all the way through. Lets tally up some scores');
+      alert('OMG. You made it all the way through. Lets tally up some scores and see how you did. Shall we?');
+      $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayGameResults();
     } else {
 
     currentStateStore = userAnswerStore.length;
+    questionArray = [];
     loadQuestions();
     updateNumberCounter();
     pushNextQuestion();
     $('.js-responses-container').removeClass('js-right-answer js-wrong-answer');
     $("input[type=radio]").attr('disabled', false);
+    $("img[class='giphy-embed']").attr('src', defaultGif[0]);
     $("form[class='quiz-answer-form']").trigger('reset');
     $("button[class='js-next-button']").toggle();
     $("button[class='js-submit-button']").toggle();
@@ -198,6 +230,5 @@ $('.js-next-button').on('click', event => {
 });
 
 $(handleStartGame());
-
 
 });
