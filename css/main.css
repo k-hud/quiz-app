@@ -22,7 +22,17 @@ h1 {
     font-family: 'Roboto', sans-serif;
  }
 
+/* Start Game Page */
 
+.standard-button {
+  background-color: white;
+  margin-top: 50px;
+  padding: 10px 10px;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 1.25em;
+  visibility: visible;
+}
 
 /* Background Video */
 
@@ -146,11 +156,6 @@ h1 {
 .game-instructions-header {
     text-align: center;
     padding: 10px 0;
-}
-
-.begin-game {
-    text-align: center;
-    margin: 0 auto;
 }
 
 /* Questions */
