@@ -1,6 +1,8 @@
 # quiz-app
 
-Hi! This is my Quiz App. The first major assignment for my Full Stack Developer course at Thinkful. 
+Hi! This is my Quiz App. The first major assignment for my Full Stack Developer course at Thinkful.
+
+You can play the Quiz App here: https://kylemhudson.github.io/quiz-app/
 
 The requirements for the app are:
 
