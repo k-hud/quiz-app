@@ -87,6 +87,7 @@ function displayAnswerResults(answer, correctAnswerString) {
         $('.js-responses-container').html(`Right! You are a rockstar!<br/>
           Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
         $("img[class='giphy-embed']").attr('src', yesGif);
+        $("img[class='giphy-embed']").attr('alt', 'You did great!');
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
@@ -100,6 +101,7 @@ function displayAnswerResults(answer, correctAnswerString) {
         $('.js-responses-container').html(`No way! That's not it. <br/>
         The correct answer was ${questionStore[currentStateStore].answer}.`);
         $("img[class='giphy-embed']").attr('src', noGif);
+        $("img[class='giphy-embed']").attr('alt', 'You did didnt do so hot. Womp Womp.');
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
         $("button[class='js-submit-button']").toggle();
@@ -183,6 +185,7 @@ function nextQuestion() {
 function handleStartGame() {
 
     $("img[class='giphy-embed']").attr('src', defaultGif[0]);
+    $("img[class='giphy-embed']").attr('alt', 'Waiting on you');
     setCurrentQuestion();
     console.log(`In handleStartGame Current state store is: ${currentStateStore}`);
     $("button[class='js-next-button']").toggle();
