@@ -4,6 +4,22 @@ Hi! This is my Quiz App. The first major assignment for my Full Stack Developer 
 
 You can play the Quiz App here: https://kylemhudson.github.io/quiz-app/
 
+FEATURES
+
+Here are some of the features I worked into the app:
+
+- When you answer a question, we turn off the radio buttons. No going back and changing your mind!
+- The questions will be presented at random. Dont try and remember the position of a right answer, they change every time!
+- Let's shut off the Submit button while we're at it so we don't resubmit.
+- While you're deciding on a question, we'll have a little Rascal show you his displeasure.
+- When you answer, we'll randomize a set of GIFs and show related reactions based on if you got it right or not.
+- You'll get a reaction, we'll tell you what the right answer was, and and tell you the question that's coming up.
+- No skipping! Dont try and not answer, you'll get an alert.
+- When you're all done with your 10 questions, we'll tally the answers, give you your score, and present you with a final nice GIF.
+
+ENJOY!
+
+
 The requirements for the app are:
 
 User experience requirements
