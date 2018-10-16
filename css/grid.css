@@ -11,16 +11,20 @@
 
 
 
-.col-3, .col-4, .col-6, .col-12 {
+.col-3, .col-4, .col-6 {
     float:left;
     padding-left: 1.041666667%;
     padding-right: 1.041666667%;
 }
 
+.col-12 {
+    float:left;
+}
+
 
 /* Clearfix */
 
-.row::before 
+.row::before
 .row::after {
     content: '';
     display: table;

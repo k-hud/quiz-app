@@ -84,7 +84,8 @@ function displayAnswerResults(answer, correctAnswerString) {
         let yesGif = newGoodGif();
         console.log(`Did I send yesGif back over? ${yesGif}`);
         $('.js-responses-container').addClass('js-right-answer');
-        $('.js-responses-container').html(`Right! You are a rockstar! Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
+        $('.js-responses-container').html(`Right! You are a rockstar!<br/>
+          Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
         $("img[class='giphy-embed']").attr('src', yesGif);
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
@@ -96,7 +97,8 @@ function displayAnswerResults(answer, correctAnswerString) {
       } else {
         let noGif =newBadGif();
         $('.js-responses-container').addClass('js-wrong-answer');
-        $('.js-responses-container').html(`No way! That's not it. The correct answer was ${questionStore[currentStateStore].answer}.`);
+        $('.js-responses-container').html(`No way! That's not it. <br/>
+        The correct answer was ${questionStore[currentStateStore].answer}.`);
         $("img[class='giphy-embed']").attr('src', noGif);
         $("input[type=radio]").attr('disabled', true);
         $("button[class='js-next-button']").toggle();
@@ -192,15 +194,20 @@ $('.js-submit-button').on('click', event => {
 
     $("input[type=radio]").attr('enabled', false);
     event.preventDefault();
-    var checkedName = $('input[name=quiz-answer]:checked').siblings().children().html();
-    checkRightOrWrong(checkedName, currentStateStore, currentQuestionNumber);
+    if ($("input[type=radio]").is(':checked')) {
+      var checkedName = $('input[name=quiz-answer]:checked').siblings().children().html();
+      checkRightOrWrong(checkedName, currentStateStore, currentQuestionNumber);
+    } else {
+      alert('Hey! Pick one!');
+    }
+
 
  });
 
 $('.js-next-button').on('click', event => {
 
     if (userAnswerStore.length === 10) {
-      alert('OMG. You made it all the way through. Lets tally up some scores');
+      alert('OMG. You made it all the way through. Lets tally up some scores and see how you did. Shall we?');
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayGameResults();
     } else {
