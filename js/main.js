@@ -197,7 +197,7 @@ $('.js-next-button').on('click', event => {
   }
 });
 
-$(handleStartGame);
+$(handleStartGame());
 
 
 });
