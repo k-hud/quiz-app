@@ -11,7 +11,9 @@ const questionStore = [
     { question: "What character in The Neverending Story is a young warrior from the Grassy Plains?", answer: "Atreyu", incorrect1: "Artax", incorrect2: "Bastian", incorrect3: "Falcor"}
 ];
 
-const defaultGif = ["https://media.giphy.com/media/m1y5Iver1GNR6/giphy.gif"];
+const defaultGif = ["https://media.giphy.com/media/tXL4FHPSnVJ0A/giphy.gif"];
+
+const finalGif = ["https://media.giphy.com/media/7rkXvr6k6KxRS/giphy.gif"];
 
 const userAnswerStore = [];
 
