@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(function() {
 
 // datastore.js holds all of the following:
 // questionStore = Array of Objects, each holding the questions in order by index.
@@ -61,13 +61,11 @@ function choiceDisplay() {
 
 function newGoodGif() {
   let yesGif = rightReactionGifs[Math.floor(Math.random()*rightReactionGifs.length)];
-  console.log(yesGif);
   return yesGif;
 }
 
 function newBadGif() {
   let badGif = wrongReactionGifs[Math.floor(Math.random()*wrongReactionGifs.length)];
-  console.log(badGif);
   return badGif;
 }
 
@@ -82,7 +80,6 @@ function displayAnswerResults(answer, correctAnswerString) {
 
     if (answer === true) {
         let yesGif = newGoodGif();
-        console.log(`Did I send yesGif back over? ${yesGif}`);
         $('.js-responses-container').addClass('js-right-answer');
         $('.js-responses-container').html(`Right! You are a rockstar!<br/>
           Let's keep this train moving by going to question number #${currentQuestionNumber}.`);
@@ -145,14 +142,12 @@ function loadQuestions() {
   choiceFour = questionStore[currentStateStore].incorrect3;
 
   questionArray.push(choiceOne, choiceTwo, choiceThree, choiceFour);
-  console.log(questionArray);
   questionRandomize(questionArray);
 
   function questionRandomize(array) {
 
       let randomArray = array;
       randomArray.sort(function() { return 0.5 - Math.random() });
-      console.log(`New shuffled is: ${questionArray}`);
       }
 
 
@@ -168,7 +163,6 @@ function setCurrentQuestion() {
     loadQuestions();
     updateNumberCounter();
     pushNextQuestion();
-    console.log(`At end of setCurrentQuestion Current state store is: ${currentStateStore}`);
 }
 
 function nextQuestion() {
@@ -187,7 +181,6 @@ function handleStartGame() {
     $("img[class='giphy-embed']").attr('src', defaultGif[0]);
     $("img[class='giphy-embed']").attr('alt', 'Waiting on you');
     setCurrentQuestion();
-    console.log(`In handleStartGame Current state store is: ${currentStateStore}`);
     $("button[class='js-next-button']").toggle();
 
 
