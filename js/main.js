@@ -1,14 +1,5 @@
 $(function() {
 
-// datastore.js holds all of the following:
-// questionStore = Array of Objects, each holding the questions in order by index.
-// userAnswerStore = Array where we can store the # of the answers that were picked
-// rightAnswerStore = Numbers of the correct answers
-// defaultGif = Gif showing that we're waiting around for you to answer.
-// finalGif = Your suprise for ending the game.
-// wrongReactionGifs = Gifs for wrong answers.
-// rightReactionGifs = Gifs for right answers.
-
 let question = "";
 let choiceOne = "";
 let choiceTwo = "";
@@ -19,7 +10,7 @@ let questionArray = [];
 let currentStateStore = userAnswerStore.length;
 let currentQuestionNumber = userAnswerStore.length + 1;
 
-function displayGameResults() {
+function tallyGameResults() {
 
   function countRightArray(array, testAgainst) {
       var count = 0;
@@ -30,10 +21,11 @@ function displayGameResults() {
       }
       return count;
   }
-
   var numRight = countRightArray(userAnswerStore, "True");
   var numWrong = countRightArray(userAnswerStore, "False");
+}
 
+function displayGameResults() {
 
   $('.results-container').html(`<span class="results-headline">Ok. Here's how you did. Are you nervous?</span>
     <p class="results-text">You got: <span class="right-num">${numRight}</span> right answers.</p>
@@ -71,7 +63,6 @@ function newBadGif() {
 
 function displayAnswerResults(answer, correctAnswerString) {
 
-    //This works.
     if (currentQuestionNumber < 10) {
       currentQuestionNumber++
     } else {
@@ -111,7 +102,6 @@ function displayAnswerResults(answer, correctAnswerString) {
 
 function checkRightOrWrong (selectedName) {
 
-    // This works. Checks answer and sends true.
     if (selectedName == questionStore[currentStateStore].answer) {
         var checkedAnswer = true;
       } else {
@@ -131,6 +121,8 @@ function pushNextQuestion() {
 function updateNumberCounter() {
 
     $('.question-counter').html(`<span class="question-counter">${currentQuestionNumber}</span> of 10`);
+    $('.your-score').html(`<span class="your-score">${currentQuestionNumber}</span> of 10`);
+
 }
 
 function loadQuestions() {
@@ -174,8 +166,6 @@ function nextQuestion() {
   setCurrentQuestion();
 }
 
-//Set which question should come up first/next.
-//Status:
 function handleStartGame() {
 
     $("img[class='giphy-embed']").attr('src', defaultGif[0]);
@@ -206,6 +196,7 @@ $('.js-next-button').on('click', event => {
       alert('OMG. You made it all the way through. Lets tally up some scores and see how you did. Shall we?');
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayGameResults();
+      tallyGameResults();
     } else {
 
     currentStateStore = userAnswerStore.length;
