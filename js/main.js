@@ -46,7 +46,7 @@ function displayFinalGameResults() {
 
   `);
 
-  $('.next-button-container').html(`<a href="question.html"><button class="restart-button">Restart</button></a>`);
+  $('.next-button-container').html(`<a href="index.html"><button class="restart-button">Restart</button></a>`);
 }
 
 function questionDisplay() {
