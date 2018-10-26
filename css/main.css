@@ -193,7 +193,7 @@ h1, h2, h3, p, ul, li {
 }
 
 .question-number {
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 10px 0px;
 }
 
@@ -206,13 +206,13 @@ h1, h2, h3, p, ul, li {
 }
 
 .question-counter {
-    font-size: 1.5em;
+    font-size: 1em;
     font-family: 'Roboto', sans-serif;
     padding: 2px 0px 10px 0px;
 }
 
 .your-score-headline {
-  font-size: 1.5em;
+  font-size:  1.2em;
   font-family: 'Roboto', sans-serif;
 }
 

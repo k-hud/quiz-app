@@ -7,9 +7,6 @@ var choiceThree = "";
 var choiceFour = "";
 var questionArray = [];
 
-let rightAnswers = 0;
-let wrongAnswers = 0;
-
 var currentStateStore = userAnswerStore.length;
 var currentQuestionNumber = userAnswerStore.length + 1;
 
@@ -22,26 +19,15 @@ function countRightArray(array, testAgainst) {
     }
     return count;
     rightAnswers = countRightArray(userAnswerStore, "True");
-    wrongAnswers = countRightArray(userAnswerStore, "False");
-}
-
-function tallyGameResults() {
-
-  rightAnswers = countRightArray(userAnswerStore, "True");
-  wrongAnswers = countRightArray(userAnswerStore, "False");
-  showScoreProgress(rightAnswers, wrongAnswers);
-}
-
-function showScoreProgress(rightAnswers, wrongAnswers) {
-  $('.your-score').html(`<p class="results-text">You got: <span class="right-num">${numRight}</span> right answers.</p>
-  <p class="results-text">You got: <span class="wrong-num">${numWrong}</span> wrong answers.</p>`);
 }
 
 function displayFinalGameResults() {
-
+  let currentScore = countRightArray(userAnswerStore, "True");
+  let percentScore = (currentScore / 10) * 100;
   $('.results-container').html(`<span class="results-headline">Ok. Here's how you did. Are you nervous?</span>
-    <p class="results-text">You got: <span class="right-num">${rightAnswers}</span> right answers.</p>
-    <p class="results-text">You got: <span class="wrong-num">${wrongAnswers}</span> wrong answers.</p>`);
+    <p class="results-text">You got: <span class="right-num">${currentScore}</span> right answers out of a possible <strong>10</strong>.</p><br />
+    <p>That means if we were in high school, your teacher would have given you a score of <strong>${percentScore}%</strong></p><br/>
+    <p>Now you just have to ask yourself... Would your mother be happy with that score?</p><br/>`);
   $('.js-results-container').html(`
 
   `);
@@ -135,7 +121,8 @@ function pushNextQuestion() {
 function updateNumberCounter() {
 
     $('.question-counter').html(`<span class="question-counter">${currentQuestionNumber}</span> of 10`);
-    $('.your-score').html(`<span class="your-score">${rightAnswers}</span> of 10`);
+    let currentScore = countRightArray(userAnswerStore, "True");
+    $('.your-score').html(`<span class="your-score">${currentScore}</span> of 10`);
 
 }
 
@@ -208,7 +195,6 @@ $('.js-next-button').on('click', event => {
       alert('OMG. You made it all the way through. Lets tally up some scores and see how you did. Shall we?');
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayFinalGameResults();
-      tallyGameResults();
     } else if ($('.js-next-button').html() == 'Begin') {
 
       $("input[type=radio]").toggle();
