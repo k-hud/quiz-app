@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,59 +14,121 @@
     <body>
         <div class="background-video">
             <video loop muted autoplay class="fullscreen-bg__video">
-                <source src="https://player.vimeo.com/external/293920279.hd.mp4?s=83fc7f0aa61c616acc61d4806a5141223fc799ea&profile_id=169" type="video/mp4">
+                <source id="#background-video" src="https://player.vimeo.com/external/293920279.hd.mp4?s=83fc7f0aa61c616acc61d4806a5141223fc799ea&profile_id=169" type="video/mp4">
             </video>
         </div>
-       <header>
+       <header role="banner">
             <div class="row">
                 <div class="col-12">
                     <div class="site-header">
                         <a href="index.html"><h1 class="site-headline">The Movie Trivia App</h1></a>
 
-                        <a href="index.html"><h2 class="byline">Are you ready to get started?</h2></a>
+                        <a href="index.html"><h2 class="byline">I'm so nervous, what's going to happen!?</h2></a>
                     </div>
                 </div>
             </div>
        </header>
-       <main>
+       <main role="main">
             <div class="row">
-                <div class="game-container col-12">
-                    <div class="row">
-                            <div class="question-container">
+                    <div class="game-container col-12">
+                        <div class="row">
+                          <section class="question-number-container col-4">
+                              <h3 class="question-number">Question: </h3>
+                              <div class="question-counter"><!--Question counter goes here--></div>
+                              <h3 class="your-score-headline">Your score: </h3>
+                              <div class="your-score"><!--Score goes here--></div>
+                          </section>
 
-                                <h2 class="question-number">The Best Darn Movie Quiz App in the World</h2>
+                          <div class="padding-container col-4">
+                          </div>
 
-                                <h3 class="question">Ok, we know we're overstating just a bit. <br />But we're excited about this one. </h3>
+                          <section class="status-photo-container col-4">
+                              <h4>Game Status:</h4>
+                              <p><img src="https://media.giphy.com/media/o5oLImoQgGsKY/giphy.gif" frameBorder="0" id="#update-gif" class="giphy-embed" alt="Reaction Gif showing if you did well or not"></p>
+                          </section>
+                        </div>
 
+                        <div class="row">
+
+                          <div class="padding-container col-3">
+                          </div>
+
+                          <div class="col-6 results-container">
+                            <section class="js-question-container">
+                              <ul class="instructions-list">
+                               <li>We'll ask you 10 questions, one after the other.</li>
+                               <li>You answer them to the best of your ability.</li>
+                               <li>We'll know if you cheat, we've turned on your computer camera. (Just kidding.)</li>
+                               <li>If you get one wrong, we'll tell you. If you get it right, kudos!</li>
+                               <li>At the end, we'll give you a score, out of 10.</li>
+                             </ul>
+                            </section>
+                            <section class="js-responses-container" id="js-responses-container">
+                              <!-- JS responses will appear here. -->
+                            </section>
+                          </div>
+
+                          <div class="padding-container col-3">
+                          </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="padding-container col-3 clear">
                             </div>
-                    </div>
-                    <div class="row">
 
+                            <div class=" col-6">
+
+                              <section class="answer-container js-results-container">
+                                  <form class="quiz-answer-form" id="#question-picker-form">
+                                      <fieldset>
+                                        <legend class="choose-headline">Let's get this show on the road:</legend>
+                                        <ul class="form-list js-form-container">
+                                          <li>
+                                            <input type="radio" name="quiz-answer" value="answer-1" class="choices" required>
+                                            <label for="answer-1"><span id="#choice-one"><!--Choice one here--></span></label>
+                                          </li>
+                                          <li>
+                                            <input type="radio" name="quiz-answer" value="answer-2"  class="choices" required>
+                                            <label for="answer-2" id="#choice-two"><span id="#choice-two"><!--Choice two here--></span></label>
+                                          </li>
+                                          <li>
+                                            <input type="radio" name="quiz-answer" value="answer-3" class="choices" required>
+                                            <label for="answer-3"><span id="#choice-three"><!--Choice three here--></span></label>
+                                          </li>
+                                          <li>
+                                            <input type="radio" name="quiz-answer" value="answer-4" class="choices" required>
+                                            <label for="answer-4"><span id="#choice-four"><!--Choice four here--></span></label>
+                                          </li>
+                                        </ul>
+                                      </fieldset>
+                                      <div class="button-container">
+                                         <button type="submit" class="js-submit-button">Submit</button>
+                                      </div>
+                                  </form>
+                              </section>
+                            </div>
+
+                          <div class="padding-container col-3 clear">
+                          </div>
+
+                      </div>
+
+                      <div class="row clear">
                         <div class="padding-container col-3">
                         </div>
-
-                        <div class="instruction-container col-6">
-                            <p><h3 class="game-instructions-header">How to play: </h3>
-                                <div class="game-instructions">
-                                    <ul class="instructions-list">
-                                        <li>We'll ask you 10 questions, one after the other.</li>
-                                        <li>You answer them to the best of your ability.</li>
-                                        <li>We'll know if you cheat, we've turned on your computer camera. (Just kidding.)</li>
-                                        <li>If you get one wrong, we'll tell you. If you get it right, kudos!</li>
-                                        <li>At the end, we'll give you a score, out of 10.</li>
-                                    </ul>
-                                </div>
-                            </p>
-
-                            <a href="question.html"><button class="standard-button begin-game">Let's Begin</button></a>
+                        <div class="col-6">
+                          <section class="next-button-container">
+                            <button class="js-next-button">Begin</button>
+                          </section>
                         </div>
-
                         <div class="padding-container col-3">
                         </div>
+                      </div>
 
                     </div>
                 </div>
-
             </div>
        </main>
 

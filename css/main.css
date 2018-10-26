@@ -2,24 +2,12 @@
 
 /* Global Page Elements */
 
-h1 {
-    font-family: 'K2D', sans-serif;
- }
-
- h2 {
-    font-family: 'K2D', sans-serif;
- }
-
- h3 {
-    font-family: 'K2D', sans-serif;
- }
-
- p {
+h1, h2, h3, p, ul, li {
     font-family: 'Roboto', sans-serif;
  }
 
- ul, li {
-    font-family: 'Roboto', sans-serif;
+ .clear {
+   clear: both;
  }
 
 /* Start Game Page */
@@ -116,7 +104,7 @@ h1 {
 }
 
 .padding-container {
-    height: 10px;
+    height: 25px;
 }
 
 .answer-container {
@@ -179,6 +167,7 @@ h1 {
 }
 
 .instructions-list li {
+    font-size: .8em;
     list-style-type: square;
     list-style-position: inside;
     white-space: normal;
@@ -193,13 +182,22 @@ h1 {
 
 /* Questions */
 
-.question-number {
+.choose-headline {
+  font-size: 1.2em;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 10px;
+}
 
+.legend-red {
+  color: red;
+}
+
+.question-number {
+    font-size: 1.2em;
     padding: 10px 0px;
 }
 
 .question {
-
     padding: 20px;
 }
 
@@ -208,9 +206,21 @@ h1 {
 }
 
 .question-counter {
-    font-size: 2em;
+    font-size: 1em;
     font-family: 'Roboto', sans-serif;
-    padding-top: 5px;
+    padding: 2px 0px 10px 0px;
+}
+
+.your-score-headline {
+  font-size:  1.2em;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.your-score {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 5px;
 }
 
 /* Answers */
@@ -237,6 +247,7 @@ h1 {
     text-align: center;
     font-weight: 600;
     font-size: 1.5em;
+    padding-bottom: 10px;
 }
 
 .js-right-answer {
@@ -244,6 +255,7 @@ h1 {
     text-align: center;
     font-weight: 600;
     font-size: 1.5em;
+    padding-bottom: 10px;
 }
 
 /* Final Tally */
