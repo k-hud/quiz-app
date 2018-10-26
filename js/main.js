@@ -120,11 +120,17 @@ function pushNextQuestion() {
 
 function updateNumberCounter() {
 
-    $('.question-counter').html(`<span class="question-counter">${currentQuestionNumber}</span> of 10`);
-    let currentScore = countRightArray(userAnswerStore, "True");
-    $('.your-score').html(`<span class="your-score">${currentScore}</span> of 10`);
+    if ($('.js-next-button').html() == 'Begin') {
+      $('.question-counter').html(`<span class="question-counter">0</span> of 10`);
+      let currentScore = countRightArray(userAnswerStore, "True");
+      $('.your-score').html(`<span class="your-score">${currentScore}</span> of 10`);
+    } else {
+      $('.question-counter').html(`<span class="question-counter">${currentQuestionNumber}</span> of 10`);
+      let currentScore = countRightArray(userAnswerStore, "True");
+      $('.your-score').html(`<span class="your-score">${currentScore}</span> of 10`);
+    }
+  }
 
-}
 
 function loadQuestions() {
 
@@ -171,6 +177,7 @@ function handleStartGame() {
     $("img[class='giphy-embed']").attr('alt', 'Waiting on you');
     $("input[type=radio]").toggle();
     $("button[class='js-submit-button']").toggle();
+    updateNumberCounter();
 }
 
 
