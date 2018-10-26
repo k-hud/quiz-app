@@ -13,17 +13,6 @@ let wrongAnswers = 0;
 var currentStateStore = userAnswerStore.length;
 var currentQuestionNumber = userAnswerStore.length + 1;
 
-// function displayInstructions() {
-//   $('.js-question-container').html(`
-//     <ul class="instructions-list">
-//         <li>We'll ask you 10 questions, one after the other.</li>
-//         <li>You answer them to the best of your ability.</li>
-//         <li>We'll know if you cheat, we've turned on your computer camera. (Just kidding.)</li>
-//         <li>If you get one wrong, we'll tell you. If you get it right, kudos!</li>
-//         <li>At the end, we'll give you a score, out of 10.</li>
-//     </ul>`);
-// }
-
 function countRightArray(array, testAgainst) {
     var count = 0;
     for (var i = 0; i < array.length; i++) {
@@ -184,10 +173,8 @@ function setCurrentQuestion() {
 
 function nextQuestion() {
 
-
   $("input[type=radio]").attr('enabled', true);
   $('.js-submit-button').html('Submit');
-
   setCurrentQuestion();
 }
 
@@ -195,12 +182,11 @@ function handleStartGame() {
 
     $("img[class='giphy-embed']").attr('src', defaultGif[0]);
     $("img[class='giphy-embed']").attr('alt', 'Waiting on you');
-    // displayInstructions();
-    setCurrentQuestion();
-    $("button[class='js-next-button']").toggle();
-
-
+    $("input[type=radio]").toggle();
+    $("button[class='js-submit-button']").toggle();
 }
+
+
 
 $('.js-submit-button').on('click', event => {
 
@@ -223,6 +209,16 @@ $('.js-next-button').on('click', event => {
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayFinalGameResults();
       tallyGameResults();
+    } else if ($('.js-next-button').html() == 'Begin') {
+
+      $("input[type=radio]").toggle();
+      $("button[class='js-next-button']").html('Next');
+      $("button[class='js-next-button']").toggle()
+      $('.choose-headline').html('Please choose your answer:');
+      $("button[class='js-submit-button']").toggle()
+      loadQuestions();
+      pushNextQuestion();
+
     } else {
 
     currentStateStore = userAnswerStore.length;
