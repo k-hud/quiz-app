@@ -215,7 +215,8 @@ $('.js-next-button').on('click', event => {
       $("button[class='js-next-button']").html('Next');
       $("button[class='js-next-button']").toggle()
       $('.choose-headline').html('Please choose your answer:');
-      $("button[class='js-submit-button']").toggle()
+      $("button[class='js-submit-button']").toggle();
+      updateNumberCounter();
       loadQuestions();
       pushNextQuestion();
 
