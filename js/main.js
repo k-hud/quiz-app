@@ -10,6 +10,9 @@ var questionArray = [];
 var currentStateStore = userAnswerStore.length;
 var currentQuestionNumber = userAnswerStore.length + 1;
 
+var currentScoreState = 12;
+
+
 function countRightArray(array, testAgainst) {
     var count = 0;
     for (var i = 0; i < array.length; i++) {
@@ -162,6 +165,7 @@ function setCurrentQuestion() {
     loadQuestions();
     updateNumberCounter();
     pushNextQuestion();
+
 }
 
 function nextQuestion() {
@@ -169,6 +173,7 @@ function nextQuestion() {
   $("input[type=radio]").attr('enabled', true);
   $('.js-submit-button').html('Submit');
   setCurrentQuestion();
+
 }
 
 function handleStartGame() {
@@ -203,7 +208,7 @@ $('.js-next-button').on('click', event => {
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayFinalGameResults();
     } else if ($('.js-next-button').html() == 'Begin') {
-
+      console.log("This is the current state number:", currentScoreState);
       $("input[type=radio]").toggle();
       $("button[class='js-next-button']").html('Next');
       $("button[class='js-next-button']").toggle()
