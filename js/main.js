@@ -10,9 +10,6 @@ var questionArray = [];
 var currentStateStore = userAnswerStore.length;
 var currentQuestionNumber = userAnswerStore.length + 1;
 
-var currentScoreState = 12;
-
-
 function countRightArray(array, testAgainst) {
     var count = 0;
     for (var i = 0; i < array.length; i++) {
@@ -208,6 +205,7 @@ $('.js-next-button').on('click', event => {
       $("img[class='giphy-embed']").attr('src', finalGif[0]);
       displayFinalGameResults();
     } else if ($('.js-next-button').html() == 'Begin') {
+
       console.log("This is the current state number:", currentScoreState);
       $("input[type=radio]").toggle();
       $("button[class='js-next-button']").html('Next');
